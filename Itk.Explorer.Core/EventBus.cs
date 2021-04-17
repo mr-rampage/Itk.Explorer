@@ -34,7 +34,8 @@ namespace Itk.Explorer.Core
         public static IEventBus Create()
         {
             var hubNode = new HubNode<IEvent>()
-                .Deploy(new ServiceNodeFactory<HelloService, IEvent>());
+                .Deploy(new ServiceNodeFactory<HelloService, IEvent>())
+                .Deploy(new ServiceNodeFactory<ReplyService, IEvent>());
             return new EventBus(hubNode, new TaskMessageBus<IEvent>());
         }
 
